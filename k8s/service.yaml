@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cicd-demo-service # Tên cho Service
+spec:
+  type: LoadBalancer # Yêu cầu một IP bên ngoài từ cloud
+  ports:
+  - port: 80 # Cổng mà bên ngoài sẽ truy cập vào
+    targetPort: 3000 # Cổng mà container của bạn đang chạy (từ deployment.yml)
+    protocol: TCP
+  selector:
+    app: cicd-demo # Rất quan trọng: Phải khớp với labels của Pod

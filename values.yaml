@@ -1,0 +1,18 @@
+alertmanager:
+  config:
+    global:
+      smtp_smarthost: 'smtp.gmail.com:587'
+      smtp_from: 'manhdung05072005@gmail.com'
+      smtp_auth_username: 'manhdung05072005@gmail.com'
+      smtp_auth_password: 'pjihvjzownceqgzx'   # không có khoảng trắng!
+      smtp_require_tls: true
+    route:
+      receiver: 'email-alert'
+      group_wait: 10s
+      group_interval: 30s
+      repeat_interval: 1m
+    receivers:
+      - name: 'email-alert'
+        email_configs:
+          - to: 'manhdung05072005@gmail.com'
+            send_resolved: true
